@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import './index.css';
 import pfpp from './assets/pfpp.jpg';
-
+import momentum from './assets/momentum.png';
+import lendahand from './assets/lend.png';
+import flavor from './assets/flavor.png';
 interface TimelineItemData {
   year: string;
   title: string;
@@ -9,6 +11,7 @@ interface TimelineItemData {
   tech?: string;
   description: string;
   isHTML?: boolean;
+  images?: string[];  // Add support for multiple images
 }
 
 const timelineData: TimelineItemData[] = [
@@ -64,24 +67,24 @@ const timelineData: TimelineItemData[] = [
     title: 'Momentum Fitness',
     subtitle: 'Fullstack Web & Mobile App',
     tech: 'React, TypeScript, Node.js, Express, PostgreSQL, Knex.js, JWT, Bcrypt, React-Bootstrap, Grommet, Git',
-    description:
-      'Built a cross-platform fitness tracker helping users log workouts, track progress, and stay motivated. Designed a responsive UI with React, TypeScript, and Grommet. Developed a secure backend with Node.js and Express, featuring JWT authentication and Bcrypt for password protection. Used PostgreSQL with Knex.js to store user-specific workout data and goals. Led agile team as Scrum Master, managing sprint planning, stakeholder meetings, and daily standups.',
+    description: 'Built a cross-platform fitness tracker helping users log workouts, track progress, and stay motivated. Designed a responsive UI with React, TypeScript, and Grommet. Developed a secure backend with Node.js and Express, featuring JWT authentication and Bcrypt for password protection. Used PostgreSQL with Knex.js to store user-specific workout data and goals. Led agile team as Scrum Master, managing sprint planning, stakeholder meetings, and daily standups.',
+    images: [momentum]
   },
   {
     year: '2024',
     title: 'Lend A Hand NYC',
     subtitle: 'Volunteer Matching App',
     tech: 'React, TypeScript, Node.js, Express, Knex.js, PostgreSQL, JWT, Bcrypt, React-Bootstrap, Grommet, Git',
-    description:
-      'Created a full-stack platform connecting NYC organizations with local volunteers. Built an accessible, responsive frontend with React and React-Bootstrap. Engineered a Node.js backend with Express and Knex.js, including RESTful APIs for user auth, events, and signups. Implemented secure JWT auth and data relationships using PostgreSQL.',
+    description: 'Created a full-stack platform connecting NYC organizations with local volunteers. Built an accessible, responsive frontend with React and React-Bootstrap. Engineered a Node.js backend with Express and Knex.js, including RESTful APIs for user auth, events, and signups. Implemented secure JWT auth and data relationships using PostgreSQL.',
+    images: [lendahand]
   },
   {
     year: '2024',
     title: 'Flavor Delight',
     subtitle: 'Recipe book',
     tech: 'React,styled-components, Figma, React Testing Library, TheMealDB API',
-    description:
-      'Developed a sleek recipe app for discovering global cuisines. Used React with styled-components for modular styling and TheMealDB API for dynamic recipe data. Built search and filter features with real-time results. Designed UI in Figma and tested interactions using React Testing Library. Collaborated in a two-person agile team.',
+    description: 'Developed a sleek recipe app for discovering global cuisines. Used React with styled-components for modular styling and TheMealDB API for dynamic recipe data. Built search and filter features with real-time results. Designed UI in Figma and tested interactions using React Testing Library. Collaborated in a two-person agile team.',
+    images: [flavor]
   },
   {
     year: '2024',
@@ -135,6 +138,18 @@ function TimelineItem({ item }: { item: TimelineItemData }) {
               <div dangerouslySetInnerHTML={{ __html: item.description }} />
             ) : (
               item.description
+            )}
+            {item.images && item.images.length > 0 && (
+              <div className="project-images">
+                {item.images.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`${item.title} screenshot ${index + 1}`}
+                    className="project-image"
+                  />
+                ))}
+              </div>
             )}
           </div>
         )}

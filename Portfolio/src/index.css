@@ -264,3 +264,30 @@ body {
   text-align: center;
   margin-top: 2rem;
 }
+
+.project-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.project-image {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.project-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 194, 255, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .project-images {
+    grid-template-columns: 1fr;
+  }
+}
