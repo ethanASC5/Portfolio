@@ -153,9 +153,11 @@ function TimelineItem({ item }: { item: TimelineItemData }) {
             )}
           </div>
         )}
-        <button className="toggle-btn" onClick={() => setExpanded(!expanded)}>
-          {expanded ? 'Hide Details' : 'See Details'}
-        </button>
+        <div className="toggle-btn-container">
+          <button className="toggle-btn" onClick={() => setExpanded(!expanded)}>
+            {expanded ? 'Hide Details' : 'See Details'}
+          </button>
+        </div>
       </div>
     </div>
   );
