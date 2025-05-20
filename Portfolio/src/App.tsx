@@ -12,6 +12,7 @@ interface TimelineItemData {
   description: string;
   isHTML?: boolean;
   images?: string[];  // Add support for multiple images
+  type: 'project' | 'experience' | 'about';  // Add type property
 }
 
 const timelineData: TimelineItemData[] = [
@@ -20,6 +21,7 @@ const timelineData: TimelineItemData[] = [
     title: 'About Me',
     subtitle: 'Software Engineer',
     tech: '',
+    type: 'about',
     description: `
       <div class="about-me-content">
         <p>
@@ -67,6 +69,7 @@ const timelineData: TimelineItemData[] = [
     title: 'Momentum Fitness',
     subtitle: 'Fullstack Web & Mobile App',
     tech: 'React, TypeScript, Node.js, Express, PostgreSQL, Knex.js, JWT, Bcrypt, React-Bootstrap, Grommet, Git',
+    type: 'project',
     description: 'Built a cross-platform fitness tracker helping users log workouts, track progress, and stay motivated. Designed a responsive UI with React, TypeScript, and Grommet. Developed a secure backend with Node.js and Express, featuring JWT authentication and Bcrypt for password protection. Used PostgreSQL with Knex.js to store user-specific workout data and goals. Led agile team as Scrum Master, managing sprint planning, stakeholder meetings, and daily standups.',
     images: [momentum]
   },
@@ -75,6 +78,7 @@ const timelineData: TimelineItemData[] = [
     title: 'Lend A Hand NYC',
     subtitle: 'Volunteer Matching App',
     tech: 'React, TypeScript, Node.js, Express, Knex.js, PostgreSQL, JWT, Bcrypt, React-Bootstrap, Grommet, Git',
+    type: 'project',
     description: 'Created a full-stack platform connecting NYC organizations with local volunteers. Built an accessible, responsive frontend with React and React-Bootstrap. Engineered a Node.js backend with Express and Knex.js, including RESTful APIs for user auth, events, and signups. Implemented secure JWT auth and data relationships using PostgreSQL.',
     images: [lendahand]
   },
@@ -83,6 +87,7 @@ const timelineData: TimelineItemData[] = [
     title: 'Flavor Delight',
     subtitle: 'Recipe book',
     tech: 'React,styled-components, Figma, React Testing Library, TheMealDB API',
+    type: 'project',
     description: 'Developed a sleek recipe app for discovering global cuisines. Used React with styled-components for modular styling and TheMealDB API for dynamic recipe data. Built search and filter features with real-time results. Designed UI in Figma and tested interactions using React Testing Library. Collaborated in a two-person agile team.',
     images: [flavor]
   },
@@ -91,6 +96,7 @@ const timelineData: TimelineItemData[] = [
     title: ' Total Deployment Solutions',
     subtitle: 'Support Specialist/Technician ',
     tech: 'Scotiabank, RBC Bank, IMAC Tech',
+    type: 'experience',
     description:
       'Provided Level 1–4 support for major financial and tech firms. Diagnosed and reconfigured workstations, improving system efficiency by 50%. Resolved 100+ tickets involving hardware, software, and networking. Ensured smooth communication and thorough documentation with IT teams and end users.',
   },
@@ -99,6 +105,7 @@ const timelineData: TimelineItemData[] = [
     title: 'NPower',
     subtitle: 'Information Technology (IT) Fellowship',
     tech: 'Microsoft, Cisco, AWS, Windows/Linux/macOS',
+    type: 'experience',
     description:
       'Completed 4,500+ hours of IT training covering system management, networking, and cloud technologies. Installed and managed software across major OS platforms. Developed workforce readiness in areas like teamwork, customer service, agile, and ticketing systems.',
   },
@@ -106,12 +113,14 @@ const timelineData: TimelineItemData[] = [
     year: '2023',
     title: 'Goldman Sachs – All-Star Coding',
     tech: 'JavaScript',
+    type: 'experience',
     description:
       'Learned full-stack web development fundamentals through building apps and games. Gained mentorship on networking, entrepreneurship, and soft skills critical to success in tech.',
   },
   {
     year: 'Before Tech',
     title: 'From Soccer Fields to Code Fields',
+    type: 'experience',
     description:
       'Before tech, I was a dedicated soccer player—playing right back for teams like GJOA, Central Brooklyn, and eventually academy-level clubs like Met Oval and Red Bulls. I competed in Spain, Portugal, and England. After an injury and the pandemic disrupted my path, I traveled, volunteered, and found a new passion in technology leading me to NPower and The Marcy Lab School to kickstart my journey in code.',
   }
@@ -127,6 +136,7 @@ function TimelineItem({ item }: { item: TimelineItemData }) {
   return (
     <div className="timeline-item">
       <div className="timeline-dot" />
+      <div className="timeline-label" data-type={item.type}>{item.type}</div>
       <div className="timeline-content">
         <div className="timeline-year">{item.year}</div>
         <div className="timeline-title">{item.title}</div>
